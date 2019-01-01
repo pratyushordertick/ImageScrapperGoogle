@@ -28,7 +28,11 @@
   },
   "homepage": "https://github.com/pratyushordertick/ImageScrapperGoogle#readme",
   "dependencies": {
+    "bootstrap": "^4.2.1",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
-    "mongoose": "^5.4.1"
+    "mongoose": "^5.4.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
   }
 }
