@@ -1,1 +1,2 @@
-# ImageScrapperGoogle by pratyush3030"gmail.com
+# ImageScrapperGoogle 
+# run npm start and go to localhost:8080 
