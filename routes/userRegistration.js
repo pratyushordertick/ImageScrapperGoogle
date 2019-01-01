@@ -1,9 +1,24 @@
+var dbImage = require('../models/image')
+
 
 exports.registration = (req, res) => {
-    console.log('gheklscjabd')
-    res.json({"sads":"daca"});
-    
+
+    dbImage.find({ }, (err, lData) => {
+        if (err) {
+            res.json({
+                success: false,
+                msg: "Error in database"
+            })
+        } else {
+            res.json({
+                success: true,
+                msg: "Image data",
+                imgDate: lData
+            })
+        }
+    })
 }
+
 
 
 
