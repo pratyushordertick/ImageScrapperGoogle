@@ -26,9 +26,9 @@ app.use(function(req, res, next) {
     next();
 });
 app.use('/routes', routes);
-app.use(express.static(__dirname + '/client/dist/client'))
+app.use(express.static(__dirname + '/public'))
 app.use(function (req, res) {
-    res.sendFile(__dirname + '/client/dist/client/index.html')
+    res.sendFile(__dirname + '/public/index.html')
 })
 
 

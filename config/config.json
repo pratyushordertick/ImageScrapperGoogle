@@ -1,6 +1,6 @@
 {
     "development": {
-        "MONGO_URI": "mongodb://localhost:27017/imageScrapper",
+        "MONGO_URI": "mongodb://pratyushprog:pratyush30@ds111258.mlab.com:11258/todouser",
         "PORT": 9090,
         "SECRET": "D3V3L0PM3N7"
        
