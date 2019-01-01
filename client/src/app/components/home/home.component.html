@@ -1,5 +1,26 @@
 
-  <h1 class="page-header">
-    home works!
-  </h1>
+ <div class="container" ng-controller="SearchCtrl">
+<div class="row">
+  <div class="col-md-12 " style="margin-top:20px">
+      <div class="inner-addon right-addon">
+          <i class="glyphicon glyphicon-search"></i>
+          <input style="width: 100%" [(ngModel)]="imagekey"    type="text" class="form-control" placeholder="Search"/>
+         </div>
+      <div class="col-md-12   text-center">
+          <button class="button btn-primary" style="width: 24%; margin-top:  13px;" type="button" (click)="searchMe()">Search</button>
+     
+      </div>
+  </div>
+ 
+</div>
+  
+  <div ng-show="(dataImage && dataImage.length>0)">
+    
+      <div class="row" style="margin-bottom:10px">
+      <div class="col-md-4"  *ngFor="let x of dataImage; ">
+          <img [src]='x' alt="" width="220" height="180"/>
+      </div>
+    </div>
+    </div>
+</div>
   
