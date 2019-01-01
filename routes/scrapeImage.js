@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var rp = require('request-promise');
 var cheerio = require('cheerio');
+const aws= require("aws-sdk")
+var fs = require('fs'); 
+var config = require('../config/config.json');
 // var ImageService = promise.promisifyAll(commonUtil.getService('img'));
 var ImageService = require('../models/image')
 
@@ -43,7 +46,7 @@ exports.history =   function(req,res,next) {
             .then(function(html) {
                 var $ = cheerio.load(html);
                 var imgNodes = $('#ires td a img');
-                console.log(imgNodes)
+                // console.log(imgNodes)
                 // imgNodes is merely an array-like object, sigh.
                 // This is purposedly old-school JS because newer stuff doesn't work:
                 var urls = [];
@@ -51,8 +54,29 @@ exports.history =   function(req,res,next) {
                     var imgNode = imgNodes[imgNodeIdx];
                     urls.push(imgNode.attribs['src']);
                 });
-                //return urls;
                 if(urls && urls.length>0){
+                const file= urls[0];
+                aws.config.update({
+                    accessKeyId: config.aws.KEY ,
+                secretAccessKey: config.aws.ACCESS
+                });
+            
+
+                var s3 = new aws.S3();
+                var params = {
+                    Bucket: "osasnv-upload",
+            
+                    Key: 'myKey1234.png',
+                    
+                    Body: "Hello"
+                };
+                s3.putObject(params, function (perr, pres) {
+                    if (perr) {
+                        console.log("Error uploading data: ", perr);
+                    } else {
+                        console.log("Successfully uploaded data to myBucket/myKey");
+                    }
+                });
 
                     var newImage = new ImageService({
                         keyword: req.query.searchKey,
@@ -62,7 +86,7 @@ exports.history =   function(req,res,next) {
                 
                     newImage.save()
                         .then(function (savedImg) {
-                            return res.status(200).json({"status": "OK", "message": "Image found.", "data":savedImg});
+                            return res.status(200).json({"status": "OK", "message": "Image found.", "data":urls.slice(0,15)});
                         }).catch(next)
                 }else {
                     return res.status(404).json({"status": "NOT FOUND", "message": "No images found."});

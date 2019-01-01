@@ -3,5 +3,11 @@
         "MONGO_URI": "mongodb://localhost:27017/imageScrapper",
         "PORT": 9090,
         "SECRET": "D3V3L0PM3N7"
+       
+    },
+    "aws": {
+        "KEY": "AKIAJ44RV7ZD4LX3GRLQ",
+        "ACCESS":"uFAbRLJTSVPV+umkjRmSc0aiJYEVJF7MjeXgN9Fx"
+
     }
 }
