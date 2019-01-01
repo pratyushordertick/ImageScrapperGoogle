@@ -1,3 +1,19 @@
-<p>
-  selected-history works!
-</p>
+
+<div class="container" ng-show="(selectedHistory && selectedHistory.length>0)"  >
+     <div     class="row">
+<div class="col-md-12" style="margin-top: 20px" >
+    <h1 style="    color: black;
+    text-align: center;">  Selected Word:  {{selectWord}}
+      </h1>
+
+    </div>
+
+    
+    <!-- <div class="row"  ng-show="(selectedHistory && selectedHistory.length>0)" style="margin-top:10px;    margin-left:40px"> -->
+    <div class="col-md-4" style="margin-top:10px;" *ngFor="let x of selectedHistory;"  >
+        <img [src]='x' alt="" width="220" height="180"/>
+    </div>
+  
+
+</div>
+ 

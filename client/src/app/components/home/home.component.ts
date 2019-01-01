@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
   customersObservable: Observable<Response[]>;
   imagekey;
   dataImage: any;
-
+ok: any;
   constructor(private http: HttpClient) { }
-  
+
   ngOnInit() {
     return this.http.get('http://localhost:9090/routes/new');
  //   this.customersObservable = this.httpClient.get("http://127.0.0.1:3000/customers", {params});
@@ -23,11 +23,13 @@ export class HomeComponent implements OnInit {
     const ajdc: any = this.http.get('http://localhost:9090/routes/newApi?searchKey=' + this.imagekey).toPromise()
     .then((response) => {
       console.log(response);
-      this.dataImage = response.data.imgUrls;
+    this.ok = response;
+     this.dataImage = this.ok.data;
       console.log(this.dataImage);
     } );
     console.log(ajdc  );
     return ajdc;
   }
+
 
 }
