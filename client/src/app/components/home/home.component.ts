@@ -16,11 +16,12 @@ ok: any;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    localStorage.clear();
     return this.http.get('http://localhost:9090/routes/new');
  //   this.customersObservable = this.httpClient.get("http://127.0.0.1:3000/customers", {params});
   }
   searchMe(): Observable<any> {
-    const ajdc: any = this.http.get('http://localhost:9090/routes/newApi?searchKey=' + this.imagekey).toPromise()
+    const ajdc: any = this.http.get('http://localhost:8080/routes/newApi?searchKey=' + this.imagekey).toPromise()
     .then((response) => {
       console.log(response);
     this.ok = response;

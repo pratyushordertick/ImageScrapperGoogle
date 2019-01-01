@@ -14,6 +14,7 @@ ok: any;
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    localStorage.clear();
   }
 
   test(event, item) {
@@ -24,7 +25,7 @@ ok: any;
     this.router.navigateByUrl('selected');
   }
   searchMe() {
-    const ajdc: any = this.http.get('http://localhost:9090/routes/new' ).toPromise()
+    const ajdc: any = this.http.get('http://localhost:8080/routes/new' ).toPromise()
     .then((response) => {
       console.log(response);
       this.ok = response;

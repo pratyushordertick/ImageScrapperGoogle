@@ -46,38 +46,12 @@ exports.history =   function(req,res,next) {
             .then(function(html) {
                 var $ = cheerio.load(html);
                 var imgNodes = $('#ires td a img');
-                // console.log(imgNodes)
-                // imgNodes is merely an array-like object, sigh.
-                // This is purposedly old-school JS because newer stuff doesn't work:
                 var urls = [];
                 imgNodes.map(function(imgNodeIdx) {
                     var imgNode = imgNodes[imgNodeIdx];
                     urls.push(imgNode.attribs['src']);
                 });
                 if(urls && urls.length>0){
-                const file= urls[0];
-                aws.config.update({
-                    accessKeyId: config.aws.KEY ,
-                secretAccessKey: config.aws.ACCESS
-                });
-            
-
-                var s3 = new aws.S3();
-                var params = {
-                    Bucket: "osasnv-upload",
-            
-                    Key: 'myKey1234.png',
-                    
-                    Body: "Hello"
-                };
-                s3.putObject(params, function (perr, pres) {
-                    if (perr) {
-                        console.log("Error uploading data: ", perr);
-                    } else {
-                        console.log("Successfully uploaded data to myBucket/myKey");
-                    }
-                });
-
                     var newImage = new ImageService({
                         keyword: req.query.searchKey,
                         imgUrls: urls.slice(0,15)

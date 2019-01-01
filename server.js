@@ -7,32 +7,6 @@ var config = require('./config/config.json')
 var app = express();
 var mongoURI = config.development.MONGO_URI;
 mongoose.Promise = global.Promise;
-// app.get('/',(req,res)=>{
-//     res.send('hello')
-// });
-
-(async function(){
-    try{
-        aws.config.setPromisesDependency();
-        aws.config.update({
-            accessKeyId: config.aws.KEY ,
-            secretAccessKey: config.aws.ACCESS,
-            region: 'us-east-1'
-        });
-        
-const  s3= new aws.S3();
-const response=await s3.listObjectsV2({
-    Bucket: 'osasnv-upload',
-    Prefix: 'images/testingNew'
-}).promise();
-
-
-    }
-    catch(e){
-        console.log('our error',e);
-
-    }
-})();
 
 
 var routes = require('./routes/routes')
@@ -58,5 +32,5 @@ app.use(function (req, res) {
 })
 
 
-app.listen(process.env.PORT || 9090);
-console.log('Server started, Port : ' + (process.env.PORT || 9090))
+app.listen(process.env.PORT || 8080);
+console.log('Server started, Port : ' + (process.env.PORT || 8080))
