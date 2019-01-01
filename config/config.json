@@ -1,0 +1,7 @@
+{
+    "development": {
+        "MONGO_URI": "mongodb://localhost:27017/imageScrapper",
+        "PORT": 9090,
+        "SECRET": "D3V3L0PM3N7"
+    }
+}

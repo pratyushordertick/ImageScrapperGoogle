@@ -1,0 +1,34 @@
+{
+  "name": "mean-scrapper",
+  "version": "1.0.0",
+  "description": "Mean Stack with Google Image Scrapping",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pratyushordertick/ImageScrapperGoogle.git"
+  },
+  "keywords": [
+    "MEAN",
+    "Stack",
+    "Angular",
+    "2+",
+    "App",
+    "for",
+    "Image",
+    "Scrapping"
+  ],
+  "author": "pratyush3030@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pratyushordertick/ImageScrapperGoogle/issues"
+  },
+  "homepage": "https://github.com/pratyushordertick/ImageScrapperGoogle#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.1"
+  }
+}
